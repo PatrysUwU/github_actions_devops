@@ -1,6 +1,6 @@
 from calculator import isna
 
 
-def isna_test():
+def test_isna():
     assert isna("dog") == False
     assert isna(None) == True
