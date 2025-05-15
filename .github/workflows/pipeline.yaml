@@ -93,3 +93,26 @@ jobs:
       run: |
           cd env_415904 && pytest calculator_test.py::test_dzielenie
           
+  test_pandas:
+    needs: [test_dodawanie,test_mnozenie,test_odejmowanie,test_dzielenie]
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    
+    - name: prepare environemnt 
+      run: |
+         cd env_415904 && python -m pip install -r requirements.txt
+      
+
+    - name: Run test
+      run: |
+          cd env_415904 && pytest numpy_tests.py
+
