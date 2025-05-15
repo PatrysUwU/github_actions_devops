@@ -114,5 +114,5 @@ jobs:
 
     - name: Run test
       run: |
-          cd env_415904 && pytest pandas.py
+          cd env_415904 && pytest pandas_test.py
 
