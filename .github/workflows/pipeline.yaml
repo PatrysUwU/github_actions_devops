@@ -1,9 +1,9 @@
-name: lab_7_00000_test
+name: lab_7_415904_test
 
 on:
   push:
     branches:
-      - main
+      - lab_7/415904
     
 jobs:
   build:
@@ -24,9 +24,9 @@ jobs:
     
     - name: prepare environemnt 
       run: |
-         cd ./Lab_7/env_0000 && python -m pip install -r requirements.txt
+         cd ./Lab_7/env_415904 && python -m pip install -r requirements.txt
       
 
     - name: Run test
       run: |
-        cd ./Lab_7/env_0000 && pytest calculator_test.py
+        cd ./Lab_7/env_415904 && pytest calculator_test.py
