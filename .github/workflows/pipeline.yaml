@@ -24,9 +24,9 @@ jobs:
     
     - name: prepare environemnt 
       run: |
-         cd ./github_actions_devops/env_415904 && python -m pip install -r requirements.txt
+         cd env_415904 && python -m pip install -r requirements.txt
       
 
     - name: Run test
       run: |
-        cd ./github_actions_devops/env_415904 && pytest calculator_test.py
+        cd env_415904 && pytest calculator_test.py
