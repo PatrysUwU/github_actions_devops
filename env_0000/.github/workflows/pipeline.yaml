@@ -1,0 +1,35 @@
+name: lab_8_415904
+
+on:
+  push:
+    branches:
+      - lab_8/415904
+    
+jobs:
+  unit_test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install libs for testing
+      run: |
+        pip  install pytest 
+    
+    - name: prepare environemnt 
+      run: |
+        python -m pip install -r requirements.txt
+      
+    - name: start main app
+      run: |
+        cd ./main && python app.py
+
+    - name: Run test
+      run: |
+        cd ./main && pytest calculator_test.py && pytest calculator_test.py
