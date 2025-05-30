@@ -24,3 +24,7 @@ def dzielenie(liczba1, liczba2):
 def isna(val):
     return pd.isna(val)
 
+
+def add_column(df):
+    df["sum"] = df["a"] + df["b"]
+    return df
