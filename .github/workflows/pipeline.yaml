@@ -24,7 +24,7 @@ jobs:
     
     - name: prepare environemnt 
       run: |
-        python -m pip install -r requirements.txt
+        python -m pip install -r ./env_415904/requirements.txt
       
     - name: start main app
       run: |
