@@ -1,12 +1,12 @@
-name: lab_7_415904_test
+name: lab_8_415904
 
 on:
   push:
     branches:
-      - lab_7/415904
+      - lab_8/415904
     
 jobs:
-  test_dodawanie:
+  unit_test:
     runs-on: ubuntu-latest
     
     steps:
@@ -18,101 +18,18 @@ jobs:
       with:
         python-version: '3.11'
 
+    - name: Install libs for testing
+      run: |
+        pip  install pytest 
     
     - name: prepare environemnt 
       run: |
-         cd env_415904 && python -m pip install -r requirements.txt
+        python -m pip install -r requirements.txt
       
+    - name: start main app
+      run: |
+        cd ./env_415904/main && python app.py
 
     - name: Run test
       run: |
-          cd env_415904 && pytest calculator_test.py::test_dodawanie
-
-  test_odejmowanie:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.11'
-
-    
-    - name: prepare environemnt 
-      run: |
-         cd env_415904 && python -m pip install -r requirements.txt
-      
-
-    - name: Run test
-      run: |
-          cd env_415904 && pytest calculator_test.py::test_odejmowanie
-
-  test_mnozenie:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.11'
-
-    
-    - name: prepare environemnt 
-      run: |
-         cd env_415904 && python -m pip install -r requirements.txt
-      
-
-    - name: Run test
-      run: |
-          cd env_415904 && pytest calculator_test.py::test_mnozenie
-  test_dzielenie:
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.11'
-
-    
-    - name: prepare environemnt 
-      run: |
-         cd env_415904 && python -m pip install -r requirements.txt
-      
-
-    - name: Run test
-      run: |
-          cd env_415904 && pytest calculator_test.py::test_dzielenie
-          
-  test_pandas:
-    needs: [test_dodawanie,test_mnozenie,test_odejmowanie,test_dzielenie]
-    runs-on: ubuntu-latest
-    
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.11'
-
-    
-    - name: prepare environemnt 
-      run: |
-         cd env_415904 && python -m pip install -r requirements.txt
-      
-
-    - name: Run test
-      run: |
-          cd env_415904 && pytest pandas_test.py
-
+        cd ./env_415904/main && pytest calculator_test.py && pytest calculator_test.py
