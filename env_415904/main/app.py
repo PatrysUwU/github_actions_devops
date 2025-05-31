@@ -1,40 +1,46 @@
-from flask import Flask, request, jsonify
-from calculator import dodawanie,dzielenie,odejmowanie,mnozenie
 import numpy as np
+from calculator import dodawanie, dzielenie, mnozenie, odejmowanie
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-@app.route('/add', methods=['POST'])
+
+@app.route("/add", methods=["POST"])
 def add():
     data = request.get_json()
-    liczba1 = data['liczba1']
-    liczba2 = data['liczba2']
+    liczba1 = data["liczba1"]
+    liczba2 = data["liczba2"]
     result = float(dodawanie(liczba1, liczba2))
-    return jsonify({'result': result})
+    return jsonify({"result": result})
 
-@app.route('/subtract', methods=['POST'])
+
+@app.route("/subtract", methods=["POST"])
 def subtract():
     data = request.get_json()
-    liczba1 = data['liczba1']
-    liczba2 = data['liczba2']
+    liczba1 = data["liczba1"]
+    liczba2 = data["liczba2"]
     result = float(odejmowanie(liczba1, liczba2))
-    return jsonify({'result': result})
+    return jsonify({"result": result})
 
-@app.route('/multiply', methods=['POST'])
+
+@app.route("/multiply", methods=["POST"])
 def multiply():
     data = request.get_json()
-    liczba1 = data['liczba1']
-    liczba2 = data['liczba2']
+    liczba1 = data["liczba1"]
+    liczba2 = data["liczba2"]
     result = float(mnozenie(liczba1, liczba2))
-    return jsonify({'result': result})
+    return jsonify({"result": result})
 
-@app.route('/divide', methods=['POST'])
+
+@app.route("/divide", methods=["POST"])
 def divide():
     data = request.get_json()
-    liczba1 = data['liczba1']
-    liczba2 = data['liczba2']
+    liczba1 = data["liczba1"]
+    liczba2 = data["liczba2"]
     result = float(dzielenie(liczba1, liczba2))
-    return jsonify({'result': result})
+    return jsonify({"result": result})
 
-if __name__ == '__main__':
-    app.run(host="0.0.0.0",debug=True,port=5000)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", debug=True, port=5000)
+

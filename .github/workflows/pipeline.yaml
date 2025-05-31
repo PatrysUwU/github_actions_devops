@@ -29,3 +29,32 @@ jobs:
     - name: Run test
       run: |
         cd ./env_415904/main && pytest calculator_test.py 
+
+  function_test:
+    needs: unit-test
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'
+
+    - name: Install libs for testing
+      run: |
+        pip  install pytest 
+    
+    - name: prepare environemnt 
+      run: |
+        python -m pip install -r ./env_415904/requirements.txt
+    - name: run flask app
+      env:
+        FLASK_APP: app.py
+      run: |
+          flask run --host=127.0.0.1 --port=5000 &
+    - name: Run test
+      run: |
+        cd ./env_415904/main && pytest app_test.py 
