@@ -31,7 +31,7 @@ jobs:
         cd ./env_415904/main && pytest calculator_test.py 
 
   function_test:
-    needs: unit-test
+    needs: unit_test
     runs-on: ubuntu-latest
 
     steps:
