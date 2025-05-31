@@ -90,4 +90,4 @@ jobs:
 
     - name: Push the Docker image
       run: |
-        docker push ${{ secrets.DOCKER_HUB_415904_USERNAME }}/lab_app:latest
+        docker push ${{ secrets.DOCKER_HUB_415904_USERNAME }}/main_private:latest
