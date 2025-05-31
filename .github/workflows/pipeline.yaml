@@ -52,7 +52,7 @@ jobs:
         python -m pip install -r ./env_415904/requirements.txt
     - name: run flask app
       env:
-        FLASK_APP: app.py
+        FLASK_APP: ./env_415904/main/app.py
       run: |
           nohup flask run --host=127.0.0.1 --port=5000 &
 
