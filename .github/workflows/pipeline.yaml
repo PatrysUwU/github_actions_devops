@@ -86,7 +86,7 @@ jobs:
 
     - name: Build the Docker image
       run: |
-        docker build -t ${{ secrets.DOCKER_HUB_415904_USERNAME }}/lab_app:latest .
+        docker build -f ./env_415904/dockerfile -t ${{ secrets.DOCKER_HUB_415904_USERNAME }}/lab_app:latest .
 
     - name: Push the Docker image
       run: |
